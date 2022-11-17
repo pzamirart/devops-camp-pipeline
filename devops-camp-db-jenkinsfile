@@ -42,9 +42,9 @@ pipeline {
                                   sh 'docker push $HARBOR_REGISTRY/$HARBOR_PROJECT/$DB_IMAGE_NAME:$COMMIT_HASH-$PIPELINE_HASH'
                               }
                           }
-        stage('Security scanning') {
-            steps {
-                  withCredentials([usernamePassword(credentialsId: 'akargbo-harbor-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+              stage('Security scanning') {
+                  steps {
+                    withCredentials([usernamePassword(credentialsId: 'akargbo-harbor-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                       echo "Scanning $DB_IMAGE_NAME image"
                       sh 'python harbor_scanner.py -i $DB_IMAGE_NAME -r $HARBOR_REGISTRY -p $HARBOR_PROJECT -c ${USERNAME}:${PASSWORD}'
                   }
