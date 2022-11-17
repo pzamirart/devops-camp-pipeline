@@ -76,6 +76,7 @@ pipeline {
               }
            }           
         }
+    }
     post {
         cleanup {
             echo "Clean workspace"
