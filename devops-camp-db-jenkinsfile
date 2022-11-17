@@ -9,8 +9,8 @@ pipeline {
         DB_IMAGE_NAME = 'db'
     }
     stages {
-        stage('Application repository') {
-            steps {
+        steps {
+         stage('Application repository') {
                 echo "Cloning application repository"
                 sh 'git clone https://github.com/pzamirart/afs-labs-student.git'
                 dir('afs-labs-student') {
