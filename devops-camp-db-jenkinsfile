@@ -9,8 +9,8 @@ pipeline {
         DB_IMAGE_NAME = 'db'
     }
     stages {
-        steps {
-         stage('Application repository') {
+        stage('Application repository') {
+            steps {
                 echo "Cloning application repository"
                 sh 'git clone https://github.com/pzamirart/afs-labs-student.git'
                 dir('afs-labs-student') {
@@ -24,6 +24,7 @@ pipeline {
                 }
                 }
             }
+             }
             stage('DB changes: true') {
            when {
               environment name: 'BUILD_DB', value: 'true'
@@ -68,7 +69,6 @@ pipeline {
            }
         }
         }
-    }
     post {
         cleanup {
             echo "Clean workspace"
