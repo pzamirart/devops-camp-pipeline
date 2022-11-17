@@ -29,7 +29,6 @@ pipeline {
            when {
               environment name: 'BUILD_DB', value: 'true'
            }
-           stages {
               stage('Database docker build') {
                   steps {
                       echo "Building database image"
@@ -75,7 +74,6 @@ pipeline {
                   }
               }
            }
-        }
         }
     post {
         cleanup {
